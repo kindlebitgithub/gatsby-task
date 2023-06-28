@@ -16,51 +16,52 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
-  `gatsby-plugin-image`,
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `images`,
-      path: `${__dirname}/src/images`,
-    },
-  },
-  `gatsby-transformer-sharp`,
-  `gatsby-plugin-sharp`,
-  {
-    resolve: `gatsby-plugin-manifest`,
-    options: {
-      name: `gatsby-starter-default`,
-      short_name: `starter`,
-      start_url: `/`,
-      background_color: `#663399`,
-      display: `minimal-ui`,
-      icon: `src/images/gatsby-icon.png`, 
-    },
-  },
-  {
-    resolve: `gatsby-source-wordpress`,
-    options: {
-      url: `http://dev1.kindlebit.com/Development/getsby/`, 
-      schema: {
-        perPage: 20,
-        requestConcurrency: 5,
-        previewRequestConcurrency: 2,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
-      develop: {
-        hardCacheMediaFiles: true,
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, 
       },
-      type: {
-        MediaItem: {
-          localFile: {
-            requestConcurrency: 10,
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `http://dev1.kindlebit.com/Development/getsby/`, 
+        schema: {
+          perPage: 20,
+          requestConcurrency: 5,
+          previewRequestConcurrency: 2,
+        },
+        develop: {
+          hardCacheMediaFiles: true,
+        },
+        type: {
+          MediaItem: {
+            localFile: {
+              requestConcurrency: 10,
+            },
+          },
+        },
+        debug: {
+          graphql: {
+            showQueryVarsOnError: true,
           },
         },
       },
-      debug: {
-        graphql: {
-          showQueryVarsOnError: true,
-        },
-      },
     },
-  },
-],
+  ],
+};
