@@ -7,6 +7,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+const { resolve } = require('path');
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -15,29 +16,54 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
-    `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+  `gatsby-plugin-image`,
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `images`,
+      path: `${__dirname}/src/images`,
+    },
+  },
+  `gatsby-transformer-sharp`,
+  `gatsby-plugin-sharp`,
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `gatsby-starter-default`,
+      short_name: `starter`,
+      start_url: `/`,
+      background_color: `#663399`,
+      // This will impact how browsers show your PWA/website
+      // https://css-tricks.com/meta-theme-color-and-trickery/
+      // theme_color: `#663399`,
+      display: `minimal-ui`,
+      icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+    },
+  },
+  {
+    resolve: `gatsby-source-wordpress`,
+    options: {
+      url: `https://your-wordpress-site.com/graphql`, // Replace with your WordPress site's GraphQL endpoint
+      schema: {
+        perPage: 20,
+        requestConcurrency: 5,
+        previewRequestConcurrency: 2,
+      },
+      develop: {
+        hardCacheMediaFiles: true,
+      },
+      type: {
+        MediaItem: {
+          localFile: {
+            requestConcurrency: 10,
+          },
+        },
+      },
+      debug: {
+        graphql: {
+          showQueryVarsOnError: true,
+        },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-  ],
-}
+  },
+],
