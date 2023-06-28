@@ -40,9 +40,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `http://getsby.kindlebit.com/graphql`, 
+        //url: `http://getsby.kindlebit.com/graphql`, 
         
-        // url: `https://tgibfnov2022.click/graphql`, 
+         url: `https://tgibfnov2022.click/graphql`, 
         schema: {
           perPage: 20,
           requestConcurrency: 5,
