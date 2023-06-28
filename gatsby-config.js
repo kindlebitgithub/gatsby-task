@@ -33,17 +33,14 @@ module.exports = {
       short_name: `starter`,
       start_url: `/`,
       background_color: `#663399`,
-      // This will impact how browsers show your PWA/website
-      // https://css-tricks.com/meta-theme-color-and-trickery/
-      // theme_color: `#663399`,
       display: `minimal-ui`,
-      icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      icon: `src/images/gatsby-icon.png`, 
     },
   },
   {
     resolve: `gatsby-source-wordpress`,
     options: {
-      url: `https://your-wordpress-site.com/graphql`, // Replace with your WordPress site's GraphQL endpoint
+      url: `http://dev1.kindlebit.com/Development/getsby/`, 
       schema: {
         perPage: 20,
         requestConcurrency: 5,

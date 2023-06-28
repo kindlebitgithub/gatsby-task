@@ -10,8 +10,8 @@
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions
   createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
+    path: "/wp_page",
+    component: require.resolve("./src/templates/wp_page.js"),
     context: {},
     defer: true,
   })
